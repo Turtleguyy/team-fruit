@@ -1,0 +1,6 @@
+%header
+  .wrapper
+    %h1= link_to 'Mr Fruit', root_path
+    %nav
+      %div= link_to_unless_current 'Home', root_path
+      %div= link_to_unless_current 'About the Fruit', about_path

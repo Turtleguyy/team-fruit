@@ -1,0 +1,20 @@
+.featured
+  .wrapper
+    .description-and-stuff
+      %h1 Awesome Title
+      %p Each week, something something happens with videos, then magic!
+
+    = raw @latest.embed_html
+
+  %ul.scene
+    %li.layer{ data: { depth: '1' }}= image_tag 'background.jpg'
+
+.weekly-videos
+  .wrapper
+    %h1 How It Works
+    %p Something something votes something once per person something else.
+    - @recent.each do |video|
+      .video= image_tag video.thumbnail_url
+
+:javascript
+  $('.scene').parallax()
