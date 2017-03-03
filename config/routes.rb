@@ -5,5 +5,6 @@ Rails.application.routes.draw do
   resources :videos, only: 'index'
 
   get 'about', to: 'pages#about'
+  post 'vote', to: 'votes#create'
 
 end

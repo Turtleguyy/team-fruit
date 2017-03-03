@@ -1,15 +1,11 @@
 class VideosController < ApplicationController
 
   def index
-    channel = Yt::Channel.new url: 'https://www.youtube.com/user/MyMisterFruit'
-    @latest = channel.videos.first
+    start_of_week = Date.today.last_week.beginning_of_day
+    end_of_week   = start_of_week + 1.week
 
-    @recent = []
-    channel.videos.each do |video|
-      if video.published_at > Date.today.at_beginning_of_week
-        @recent.push(video)
-      end
-    end
+    @videos   = Video.where(published_at: start_of_week..end_of_week)
+    @featured = @videos.order(:view_count).limit(1).first
   end
 
 end
