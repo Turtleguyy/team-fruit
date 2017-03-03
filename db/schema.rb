@@ -10,13 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170221041554) do
+ActiveRecord::Schema.define(version: 20170303055352) do
 
   create_table "videos", force: :cascade do |t|
-    t.string   "url"
     t.boolean  "is_featured"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+    t.text     "embed_html"
+    t.datetime "published_at"
+    t.string   "thumbnail_url"
+    t.string   "title"
+    t.integer  "view_count"
+    t.string   "youtube_id"
   end
 
 end
