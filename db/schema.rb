@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170303055352) do
+ActiveRecord::Schema.define(version: 20170304053101) do
 
   create_table "videos", force: :cascade do |t|
     t.boolean  "is_featured"
@@ -22,6 +22,13 @@ ActiveRecord::Schema.define(version: 20170303055352) do
     t.string   "title"
     t.integer  "view_count"
     t.string   "youtube_id"
+  end
+
+  create_table "votes", force: :cascade do |t|
+    t.integer  "video_id"
+    t.string   "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
 end
