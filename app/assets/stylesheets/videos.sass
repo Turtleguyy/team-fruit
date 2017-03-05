@@ -60,6 +60,10 @@
       position: relative
       display: block
 
+    &.chosen a::after
+      content: 'THIS ONE!'
+      opacity: 1
+
     a::after
       top: 0
       left: 0
@@ -67,7 +71,7 @@
       position: absolute
       width: 100%
       height: 100%
-      content: 'THIS ONE!'
+      content: 'VOTE'
       display: flex
       justify-content: center
       align-items: center

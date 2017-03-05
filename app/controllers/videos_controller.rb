@@ -1,11 +1,14 @@
 class VideosController < ApplicationController
 
   def index
-    start_of_week = Date.today.last_week.beginning_of_day
-    end_of_week   = start_of_week + 1.week
-
-    @videos   = Video.where(published_at: start_of_week..end_of_week)
+    @videos   = Video.where(published_at: helpers.last_week)
     @featured = @videos.order(:view_count).limit(1).first
+
+    if cookies[:apple]
+      user = cookies[:apple]
+      vote = Vote.where user_id: user, created_at: helpers.this_week
+      @chosen_one = vote.last.try :video
+    end
   end
 
 end
