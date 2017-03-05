@@ -21,8 +21,10 @@
 
     .videos
       - @videos.each do |video|
-        .video
-          = link_to 'vote', remote: true, method: 'post', data: { params: { video: video.id }.to_param } do
+        - chosen = 'chosen' if video.id == @chosen_one.id
+
+        .video[video]{ class: chosen }
+          = link_to 'vote', method: 'post', remote: true, data: { params: { video: video.id }.to_param } do
             = image_tag video.thumbnail_url
 
 :javascript
