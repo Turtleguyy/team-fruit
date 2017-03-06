@@ -1,10 +1,12 @@
 .featured
   .wrapper
-    .description-and-stuff
-      %h1 Awesome Title
-      %p Each week, something something happens with videos, then magic!
-
-    = raw @featured.embed_html
+    %h1= @featured.title
+    .featured-video
+      = raw @featured.embed_html
+      %p
+        Every week the community contemplates, deliberates, and after much
+        consideration, they cast their vote. The video you see featured here is
+        the best of the best. The cream of the crop. The pièce de résistance!
 
   %ul.scene
     %li.layer{ data: { depth: '1' }}= image_tag 'background.jpg'
@@ -16,14 +18,12 @@
       Each person gets one vote. In the list below, click on whichever video
       was your favorite. The video with the most votes will be the featured
       video next week. Be sure to check this page each week for new videos to
-      vote on. The list below is refreshed every Sunday night, and will
+      vote on. The list below is refreshed every Monday morning, and will
       include the previous week's videos.
 
     .videos
       - @videos.each do |video|
-        - chosen = 'chosen' if video.id == @chosen_one.id
-
-        .video[video]{ class: chosen }
+        .video[video]{ class: ('chosen' if video.id == @chosen_one.try(:id)) }
           = link_to 'vote', method: 'post', remote: true, data: { params: { video: video.id }.to_param } do
             = image_tag video.thumbnail_url
 
