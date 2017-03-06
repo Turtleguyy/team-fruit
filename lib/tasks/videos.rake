@@ -16,4 +16,24 @@ namespace :videos do
     end
   end
 
+  task tally_votes: :environment do
+    start_of_week = Date.today.last_week.beginning_of_day
+    end_of_week   = start_of_week + 1.week
+    last_week     = start_of_week..end_of_week
+
+    featured = { video: nil, votes: 0 }
+    votes    = Vote.where(created_at: last_week)
+
+    votes.group_by(&:video_id).each do |video_id, votes|
+      if video_id && votes.size > featured[:votes]
+        featured[:video] = video_id
+        featured[:votes] = votes.size
+      end
+    end
+
+    video = Video.find featured[:video]
+    video.is_featured = true
+    video.save
+  end
+
 end
