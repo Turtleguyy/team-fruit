@@ -5,6 +5,7 @@ namespace :videos do
     channel.videos.each do |video|
       if video.published_at > Date.today.at_beginning_of_week - 1.week
         Video.create({
+          description: video.description,
           embed_html: video.embed_html,
           published_at: video.published_at,
           thumbnail_url: video.thumbnail_url,
