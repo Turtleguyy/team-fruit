@@ -3,10 +3,14 @@
     %h1= @featured.title
     .featured-video
       = raw @featured.embed_html
-      %p
-        Every week the community contemplates, deliberates, and after much
-        consideration, they cast their vote. The video you see featured here is
-        the best of the best. The cream of the crop. The pièce de résistance!
+      .description
+        - if @featured.description.present?
+          %p= @featured.description
+
+        %p
+          Every week the community contemplates, deliberates, and after much
+          consideration, they cast their vote. The video you see featured here
+          is the best of the best. The cream of the crop. The pièce de résistance!
 
   %ul.scene
     %li.layer{ data: { depth: '1' }}= image_tag 'background.jpg'
