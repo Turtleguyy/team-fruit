@@ -10,6 +10,13 @@ class VideosController < ApplicationController
       vote = Vote.where user_id: user, created_at: helpers.this_week
       @chosen_one = vote.last.try :video
     end
+
+    @cookies_ok = cookies[:banana]
+  end
+
+  def share_cookies
+    cookies[:banana] = true
+    render partial: 'hide_cookies'
   end
 
 end

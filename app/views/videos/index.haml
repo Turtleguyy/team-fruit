@@ -31,5 +31,14 @@
           = link_to 'vote', method: 'post', remote: true, data: { params: { video: video.id }.to_param } do
             = image_tag video.thumbnail_url
 
+- unless @cookies_ok
+  .cookies
+    = link_to 'close', 'share_cookies', remote: true, method: 'post', class: 'close'
+    .wrapper
+      %p By continuing to use this site, you agree to share your cookies.
+
+  = link_to 'http://icecreamsandwichcomics.com/post/157923361474/you-are-only-making-him-more-powerful-full-image', target: '_blank', class: 'fool' do
+    = image_tag 'fool.png'
+
 :javascript
   $('.scene').parallax()

@@ -1,13 +1,11 @@
 .scene
+  background: $brown
   overflow: hidden
 
 .layer
   height: 350px
   img
     width: 125%
-
-    // &:first-child
-    //   opacity: 0
 
     &:last-child
       top: 50%
@@ -18,3 +16,58 @@
 .content
   padding: 50px
   background: white
+
+$cookieHeight: 130px
+@keyframes hide
+  0%
+    bottom: 0
+  100%
+    bottom: -#{$cookieHeight}
+
+.cookies
+  right: 0
+  bottom: 0
+  left: 0
+  z-index: 10
+  position: fixed
+  height: $cookieHeight
+  background: $green
+  color: white
+
+  &.hide
+    &, & + .fool
+      animation: hide 200ms ease-out 0s alternate 1 forwards
+    + .fool
+      bottom: 0
+      animation-delay: 3s
+      animation-duration: 1s
+      animation-timing-function: ease-in
+
+  .close
+    top: 10px
+    right: 10px
+    z-index: 1
+    position: absolute
+    width: 50px
+    height: 50px
+    display: block
+    background: image-url('close.png') no-repeat center center
+    background-size: 50%
+    overflow: hidden
+    text-indent: 50px
+
+  p
+    margin: 0
+    text-align: center
+    text-shadow: 2px 2px 1px rgba(0,0,0,0.1)
+
+  + .fool
+    right: 0
+    bottom: -#{$cookieHeight}
+    z-index: 9
+    position: fixed
+    transition: bottom 200ms ease-out
+
+    img
+      height: $cookieHeight
+      display: block
