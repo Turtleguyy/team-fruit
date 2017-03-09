@@ -5,6 +5,10 @@ class VideosController < ApplicationController
     @featured = Video.where(is_featured: true)
       .order(updated_at: :desc).limit(1).first
 
+    if @featured.blank?
+      @featured = Video.order(view_count: :desc).limit(1).first
+    end
+
     if cookies[:apple]
       user = cookies[:apple]
       vote = Vote.where user_id: user, created_at: helpers.this_week
