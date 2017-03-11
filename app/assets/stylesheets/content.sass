@@ -17,6 +17,40 @@
   padding: 50px
   background: white
 
+.photo
+  position: relative
+  float: left
+  margin: 0 20px 0 0
+  width: 50%
+
+  .caption
+    top: 50%
+    right: 0
+    bottom: 0
+    left: 0
+    z-index: 1
+    position: absolute
+    padding: 10px
+    display: flex
+    align-items: flex-end
+    justify-content: center
+    background: linear-gradient(to top, black, transparent)
+    color: white
+    font-style: italic
+    text-shadow: 0 1px 0 black
+
+  img
+    width: 100%
+    display: block
+
+  &.campaign
+    float: right
+    margin: 0 0 0 20px
+    width: 25%
+
+    .caption
+      top: 75%
+
 .highlighted-section
   background-color: $yellow
   color: white
