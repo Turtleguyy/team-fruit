@@ -1,16 +1,13 @@
 .featured
   position: relative
   color: white
-  text-shadow: 2px 2px 1px rgba(0,0,0,0.1)
+  text-shadow: 2px 2px 1px rgba(0,0,0,0.2)
 
-  .featured-video
+  .wrapper
     display: flex
-    justify-content: space-between
-    flex-direction: row-reverse
-
-    .description
-      padding-right: 20px
-      flex: 1
+    flex-direction: column
+    align-items: center
+    text-align: center
 
   .scene
     top: 0
@@ -20,24 +17,35 @@
     z-index: 1
     position: absolute
 
+    .layer
+      height: 750px
+      @media (max-width: 900px)
+        height: 650px
+
   h1
+    width: 100%
     border-bottom-color: white
-
-  .flex-col
-    display: flex
-    flex-direction: column
-    justify-content: space-between
-
-    p
-      line-height: 30px
-      margin-bottom: auto
-      font-size: 18px
-      text-align: center
-      font-style: italic
+    border-bottom-width: 2px
 
   iframe
+    margin: 20px 0
+    width: 768px
+    height: 432px
+    max-width: calc(100% - 40px)
     background: black
     border: 20px solid white
+    box-shadow: 2px 2px 1px rgba(0,0,0,0.2)
+
+    @media (max-width: 900px)
+      width: 512px
+      height: 288px
+
+    @media (max-width: 650px)
+      width: 384px
+      height: 216px
+
+  .description
+    font-style: italic
 
 .weekly-videos
   text-align: center
