@@ -6,6 +6,7 @@
       .flex-col
         = raw @featured.embed_html
         %p Pick f the Week!
+
       .description
         - if @featured.description.present?
           %p= @featured.description
@@ -33,10 +34,13 @@
 
     %p.votification-notice Your vote has so totally been saved.
 
+.highlighted-section
+  .wrapper
+    %p
+      Check back each week to cast your vote on new videos. The list is
+      refreshed every Monday morning and will include the previous week's
+      videos.
 
-    %p.spiffy-paragraph
-      Check back each week to cast your vote on new videos. The list is refreshed every Monday morning and will
-      include the previous week's videos.
 - unless @cookies_ok
   .cookies
     = link_to 'close', 'share_cookies', remote: true, method: 'post', class: 'close'
