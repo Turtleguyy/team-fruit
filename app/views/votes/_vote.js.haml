@@ -1,18 +1,27 @@
 :plain
 
   $("#video_#{vote.video_id}").addClass('chosen')
-    .siblings('.video').removeClass('chosen')
+    .siblings('.video').removeClass('chosen');
 
-  if ($('.votification-notice').hasClass('animate')){
-    $('.votification-notice').removeClass('animate')
-    // anytime voting file is run
-    // reset the timer for window.voting
-    clearTimeout(window.voting)
+  var $notice = $('.votification-notice');
+  var showNotice = function() {
+    $notice.addClass('animate');
+    clearTimeout(window.voting);
+
+    window.voting = setTimeout(function() {
+      $('.votification-notice').removeClass('animate');
+    }, 3000);
+  };
+
+  // If the notice was already showing, hide it.
+  // Restart hide timer when the notice is finished hiding.
+  if ($notice.hasClass('animate')){
+    $notice.removeClass('animate');
+
+    var timing = parseFloat($notice.css('transition-duration')) * 1000;
+    setTimeout(showNotice, timing);
+
+  // If the notice was already hidden, show it and start the timer.
   } else {
-    $('.votification-notice').addClass('animate')
-    // window.voting timeout that removes
-    // animate class and allow exit transition
-    window.voting = setTimeout(function(){
-      $('.votification-notice').removeClass('animate')
-    }, 3000)
+    showNotice();
   }

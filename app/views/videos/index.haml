@@ -22,8 +22,8 @@
   .wrapper
     %h1 Cast your Vote!
     %p
-      Each person gets one vote. In the list below, click on your favorite video. The video with the most votes will be the featured
-      video next week.
+      Each person gets one vote. In the list below, click on your favorite
+      video. The video with the most votes will be the featured video next week.
 
     .videos
       - @videos.each do |video|
@@ -31,7 +31,8 @@
           = link_to 'vote', method: 'post', remote: true, data: { params: { video: video.id }.to_param } do
             = image_tag video.thumbnail_url
 
-    .votification-notice Your vote has so totally been saved.
+    %p.votification-notice Your vote has so totally been saved.
+
 
     %p.spiffy-paragraph
       Check back each week to cast your vote on new videos. The list is refreshed every Monday morning and will
