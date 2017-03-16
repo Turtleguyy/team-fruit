@@ -9,7 +9,7 @@ body
   padding-bottom: 130px
   color: $brown
 
-h1
+h1, h2
   margin-bottom: 20px
   padding-bottom: 10px
   border-bottom: 1px solid $brown
@@ -17,6 +17,11 @@ h1
   line-height: 1
   text-align: center
   text-transform: uppercase
+
+h2
+  margin: 30px 0 20px
+  padding: 0
+  border-bottom: none
 
 p
   margin-bottom: 20px
@@ -28,13 +33,18 @@ p
   a
     padding: 0 5px
     display: inline-block
-    background: $red
+    background: $green
     color: white
     text-shadow: 2px 2px 1px rgba(0,0,0,0.2)
     transition: background 200ms ease
     white-space: nowrap
     &:hover
       background: $yellow
+
+[title]
+  border-bottom: 2px dotted $green
+  cursor: help
+  white-space: nowrap
 
 section
   margin-bottom: 20px
