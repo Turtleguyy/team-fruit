@@ -26,6 +26,8 @@
           = link_to 'vote', method: 'post', remote: true, data: { params: { video: video.id }.to_param }, class: 'vote' do
             = image_tag video.thumbnail_url
 
+          = link_to 'watch', video_path(video), remote: true, class: 'watch'
+
     %p.votification-notice Your vote has so totally been saved.
 
 .highlighted-section

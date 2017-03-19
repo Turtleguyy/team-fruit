@@ -18,6 +18,11 @@ class VideosController < ApplicationController
     @cookies_ok = cookies[:banana]
   end
 
+  def show
+    @video = Video.find params[:id]
+    render @video
+  end
+
   def share_cookies
     cookies[:banana] = true
     render partial: 'hide_cookies'
