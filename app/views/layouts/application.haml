@@ -11,5 +11,10 @@
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
 
   %body
-    = render 'partials/header'
-    = yield
+    .container
+      = render 'partials/header'
+      = yield
+
+    .overlay
+      .close.fa.fa-times
+      .modal
