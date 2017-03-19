@@ -23,7 +23,7 @@
     .videos
       - @videos.each do |video|
         .video[video]{ class: ('chosen' if video.id == @chosen_one.try(:id)) }
-          = link_to 'vote', method: 'post', remote: true, data: { params: { video: video.id }.to_param } do
+          = link_to 'vote', method: 'post', remote: true, data: { params: { video: video.id }.to_param }, class: 'vote' do
             = image_tag video.thumbnail_url
 
     %p.votification-notice Your vote has so totally been saved.
